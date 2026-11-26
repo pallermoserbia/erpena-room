@@ -1,0 +1,17 @@
+[Unit]
+Description=Erpena uredjaj u sali (snimanje sastanaka)
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/erpena-room/agent.py run
+Restart=always
+RestartSec=5
+User=erpena-room
+SupplementaryGroups=audio
+StateDirectory=erpena-room
+ConfigurationDirectory=erpena-room
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
